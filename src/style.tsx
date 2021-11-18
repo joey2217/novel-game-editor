@@ -1,5 +1,5 @@
 import styled from 'styled-components'
+import { Layout } from 'antd'
 
-export const Container = styled.div`
-    text-align:center;
+export const Container = styled(Layout)`
 `
