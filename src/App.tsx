@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Layout } from 'antd'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
 import { Container } from './style'
 import Header from './components/Header'
 import PageLoading from './components/Loading/Page'
@@ -12,20 +13,22 @@ const About = React.lazy(() => import('./pages/about'))
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Container>
-        <Header />
-        <Content>
-          <Suspense fallback={<PageLoading />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </Content>
-      </Container>
-    </BrowserRouter>
+    <RecoilRoot>
+      <BrowserRouter>
+        <Container>
+          <Header />
+          <Content>
+            <Suspense fallback={<PageLoading />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </Content>
+        </Container>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 
